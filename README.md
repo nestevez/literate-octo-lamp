@@ -1,3 +1,11 @@
+# Sharpie Wall
+
+An updated version of the Django wall, created using C#. 
+
+Generated using:
+@hoopes31 C# Scaffold (see notes below)
+
+
 # c-sharp-scaffold
 Basic scaffolding for C#
 
