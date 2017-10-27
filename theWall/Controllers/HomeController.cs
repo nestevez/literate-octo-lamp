@@ -10,6 +10,12 @@ namespace logreg.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly DbConnector _dbConnector;
+ 
+        public HomeController(DbConnector connect)
+        {
+            _dbConnector = connect;
+        }
         // GET: /Home/
         [HttpGet]
         [Route("")]
@@ -26,10 +32,10 @@ namespace logreg.Controllers
             TryValidateModel(newu);
             if(ModelState.IsValid)
             {
-                List<Dictionary<string, object>> validusers = DbConnector.Query($"SELECT * FROM users WHERE email='{newu.email}'");
+                List<Dictionary<string, object>> validusers = _dbConnector.Query($"SELECT * FROM users WHERE email='{newu.email}'");
                 if(validusers.Count < 1)
                 {
-                    DbConnector.Execute($"INSERT INTO users (firstname, lastname, email, password) VALUES ('{newu.fname}', '{newu.lname}', '{newu.email}', '{newu.pw}')");
+                    _dbConnector.Execute($"INSERT INTO users (firstname, lastname, email, password) VALUES ('{newu.fname}', '{newu.lname}', '{newu.email}', '{newu.pw}')");
                     Index nuser = new Index{
                         logdetails = new Log{
                             email=newu.email,
@@ -51,7 +57,7 @@ namespace logreg.Controllers
             TryValidateModel(loggin);
             if(ModelState.IsValid)
             {
-               List<Dictionary<string, object>> validusers = DbConnector.Query($"SELECT * FROM users WHERE email='{loggin.email}' AND password='{loggin.pw}'");
+               List<Dictionary<string, object>> validusers = _dbConnector.Query($"SELECT * FROM users WHERE email='{loggin.email}' AND password='{loggin.pw}'");
                 if(validusers.Count > 0)
                 {
                     return RedirectToAction("Success");

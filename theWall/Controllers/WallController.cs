@@ -18,8 +18,8 @@ namespace theWall.Controllers
         }
         
         [HttpGet]
-        [Route("")]
-        public IActionResult Index()
+        [Route("/home/")]
+        public IActionResult UserWall()
         {
             return View();
         }
