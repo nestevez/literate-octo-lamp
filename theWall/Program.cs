@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Hosting;
 
-namespace scaffold
+namespace theWall
 {
     public class Program
     {
