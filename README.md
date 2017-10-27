@@ -15,10 +15,10 @@ Generated using:
 @hoopes31 C# Scaffold (see notes below)
 
 
-# c-sharp-scaffold
+## [c-sharp-scaffold](https://github.com/Hoopes31/c-sharp-scaffold)
 Basic scaffolding for C#
 
-## Includes
+### Includes
 
   * Sessions
   * JSON Serialization
